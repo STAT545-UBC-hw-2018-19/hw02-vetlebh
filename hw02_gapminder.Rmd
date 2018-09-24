@@ -1,0 +1,27 @@
+---
+title: "Gapminder dataset Exploration"
+author: "Vetle Birkeland Huglen"
+date: "24 9 2018"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(gapminder)
+library(tidyverse)
+```
+
+##Smell test the data
+
+Firstly, we will look at the dataset as a whole, and try to figure out the format of the dataset. 
+
+```{r}
+typeof(gapminder)
+class(gapminder)
+ncol(gapminder)
+nrow(gapminder)
+summary(gapminder)
+str(gapminder)
+```
+
+We see that R regards gapminder as a list by the `typeof`, while the class function reveals that in an object oriented way, gapminder is also a dataframe object. 
