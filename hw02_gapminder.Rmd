@@ -18,10 +18,26 @@ Firstly, we will look at the dataset as a whole, and try to figure out the forma
 ```{r}
 typeof(gapminder)
 class(gapminder)
-ncol(gapminder)
+storage.mode(gapminder)
+```
+
+The `typeof()` and `storage.mode()` functions regard the **gapminder** dataset as lists, which can essentially be thought of as simply a collection of elements. The `class()`
+ function reveals that the dataset is also a **data.frame**, which imposes further restrictions on the list, namely that two different variables can't have the same name, all elements are vectors, and all elements have equal length.
+ 
+```{r}
 nrow(gapminder)
-summary(gapminder)
+ncol(gapminder)
+dim(gapminder)
+length(gapminder)
+```
+
+Above are a few different ways to access the size of the dataframe; `ncols()` and `nrows()` returns the number of columns and rows, `dim()` returns the dimensions as a vector and `length()` also returns the length of the object (in this case the number of columns). One can imagine that one should be careful using `length()` on objects with more than one dimension, as it is not intuitive from the name of the function which dimension it returns. At the same time, it is very convenient to use it on 1d vectors, especially if it is not clear if the vector is transposed. 
+
+
+```{r}
 str(gapminder)
 ```
 
-We see that R regards gapminder as a list by the `typeof`, while the class function reveals that in an object oriented way, gapminder is also a dataframe object. 
+The variables `country` and `continent` are factor-variables with a certain amount of levels (one factor per country/continent). `year` and `pop` are integers and `lifeExp` and `gdpPercap` are numeric values.
+
+##Explore individual variables

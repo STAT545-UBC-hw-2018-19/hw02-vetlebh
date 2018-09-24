@@ -21,10 +21,12 @@ class(gapminder)
     ## [1] "tbl_df"     "tbl"        "data.frame"
 
 ``` r
-ncol(gapminder)
+storage.mode(gapminder)
 ```
 
-    ## [1] 6
+    ## [1] "list"
+
+The `typeof()` and `storage.mode()` functions regard the **gapminder** dataset as lists, which can essentially be thought of as simply a collection of elements. The `class()` function reveals that the dataset is also a **data.frame**, which imposes further restrictions on the list, namely that two different variables can't have the same name, all elements are vectors, and all elements have equal length.
 
 ``` r
 nrow(gapminder)
@@ -33,25 +35,24 @@ nrow(gapminder)
     ## [1] 1704
 
 ``` r
-summary(gapminder)
+ncol(gapminder)
 ```
 
-    ##         country        continent        year         lifeExp     
-    ##  Afghanistan:  12   Africa  :624   Min.   :1952   Min.   :23.60  
-    ##  Albania    :  12   Americas:300   1st Qu.:1966   1st Qu.:48.20  
-    ##  Algeria    :  12   Asia    :396   Median :1980   Median :60.71  
-    ##  Angola     :  12   Europe  :360   Mean   :1980   Mean   :59.47  
-    ##  Argentina  :  12   Oceania : 24   3rd Qu.:1993   3rd Qu.:70.85  
-    ##  Australia  :  12                  Max.   :2007   Max.   :82.60  
-    ##  (Other)    :1632                                                
-    ##       pop              gdpPercap       
-    ##  Min.   :6.001e+04   Min.   :   241.2  
-    ##  1st Qu.:2.794e+06   1st Qu.:  1202.1  
-    ##  Median :7.024e+06   Median :  3531.8  
-    ##  Mean   :2.960e+07   Mean   :  7215.3  
-    ##  3rd Qu.:1.959e+07   3rd Qu.:  9325.5  
-    ##  Max.   :1.319e+09   Max.   :113523.1  
-    ## 
+    ## [1] 6
+
+``` r
+dim(gapminder)
+```
+
+    ## [1] 1704    6
+
+``` r
+length(gapminder)
+```
+
+    ## [1] 6
+
+Above are a few different ways to access the size of the dataframe; `ncols()` and `nrows()` returns the number of columns and rows, `dim()` returns the dimensions as a vector and `length()` also returns the length of the object (in this case the number of columns). One can imagine that one should be careful using `length()` on objects with more than one dimension, as it is not intuitive from the name of the function which dimension it returns. At the same time, it is very convenient to use it on 1d vectors, especially if it is not clear if the vector is transposed.
 
 ``` r
 str(gapminder)
@@ -65,4 +66,7 @@ str(gapminder)
     ##  $ pop      : int  8425333 9240934 10267083 11537966 13079460 14880372 12881816 13867957 16317921 22227415 ...
     ##  $ gdpPercap: num  779 821 853 836 740 ...
 
-We see that R regards gapminder as a list by the `typeof`, while the class function reveals that in an object oriented way, gapminder is also a dataframe object.
+The variables `country` and `continent` are factor-variables with a certain amount of levels (one factor per country/continent). `year` and `pop` are integers and `lifeExp` and `gdpPercap` are numeric values.
+
+Explore individual variables
+----------------------------
