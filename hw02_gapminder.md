@@ -283,3 +283,36 @@ p2
 
 AND NOW LETS MAKE EVEN MORE PLOTS!!!
 ------------------------------------
+
+``` r
+a <- ggplot(gapminder, aes(pop, gdpPercap)) 
+a + geom_area(colour = "blue", fill = "blue")
+```
+
+![](hw02_gapminder_files/figure-markdown_github/unnamed-chunk-8-1.png)
+
+``` r
+a + geom_violin(fill = "red")
+```
+
+![](hw02_gapminder_files/figure-markdown_github/unnamed-chunk-8-2.png)
+
+``` r
+gapminder %>%
+  filter(continent == "Asia") %>%
+  ggplot(aes(pop, lifeExp)) +
+  geom_point(colour = "orange")
+```
+
+    ## Warning: package 'bindrcpp' was built under R version 3.4.4
+
+![](hw02_gapminder_files/figure-markdown_github/unnamed-chunk-9-1.png)
+
+``` r
+gapminder %>%
+  filter(lifeExp > 60) %>%
+  ggplot(aes(continent, gdpPercap)) +
+  geom_boxplot(colour = "maroon")
+```
+
+![](hw02_gapminder_files/figure-markdown_github/unnamed-chunk-10-1.png)

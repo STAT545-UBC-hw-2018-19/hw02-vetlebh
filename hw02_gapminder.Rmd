@@ -74,4 +74,23 @@ Now its easy to see that the distribution of populations matches the output of t
 
 ## AND NOW LETS MAKE EVEN MORE PLOTS!!!
 
+```{r}
+a <- ggplot(gapminder, aes(pop, gdpPercap)) 
+a + geom_area(colour = "blue", fill = "blue")
+a + geom_violin(fill = "red")
+```
+
+```{r}
+gapminder %>%
+  filter(continent == "Asia") %>%
+  ggplot(aes(pop, lifeExp)) +
+  geom_point(colour = "orange")
+```
+
+```{r}
+gapminder %>%
+  filter(lifeExp > 60) %>%
+  ggplot(aes(continent, gdpPercap)) +
+  geom_boxplot(colour = "maroon")
+```
 
