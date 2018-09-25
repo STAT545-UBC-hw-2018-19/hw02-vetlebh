@@ -41,3 +41,37 @@ str(gapminder)
 The variables `country` and `continent` are factor-variables with a certain amount of levels (one factor per country/continent). `year` and `pop` are integers and `lifeExp` and `gdpPercap` are numeric values.
 
 ##Explore individual variables
+
+```{r}
+country <- gapminder$country
+unique(country)
+table(country)
+```
+Firstly we take a look into the `country` variable. `unique()` lists all uniques entries of input data, which in this case just is the list of countries. `table()` lists the counts of each unique entry, a function which can be very usefull. In this case, `summary()` would actually do the same as `table()`, because its output depends on the format of the input data. 
+
+Now lets look at a numerical value, like `pop`:
+
+```{r}
+summary(gapminder$pop)
+```
+Here we see that the summary function instead returns information about the distribution.
+We can create a density plot to better visualize the information gained. 
+
+```{r}
+p <-ggplot(gapminder, aes(pop)) +
+  geom_density(fill = "pink")
+p
+```
+This plot was quite hard to read, because of the logarithmic scale of the data. Lets try to fix that:
+
+```{r}
+p2 <-ggplot(gapminder, aes(pop)) +
+  geom_density(fill="yellow") +
+  scale_x_log10()
+p2
+```
+Now its easy to see that the distribution of populations matches the output of the summary function.
+
+## AND NOW LETS MAKE EVEN MORE PLOTS!!!
+
+
